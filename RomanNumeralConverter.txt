@@ -1,0 +1,161 @@
+** start of undefined **
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roman Numeral Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <main class="container">
+        <h1>Roman Numeral Converter</h1>
+        <input type="number" id="number" placeholder="Enter a number (1-3999)" min="1" max="3999">
+        <button id="convert-btn">Convert</button>
+        <p id="output"></p>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+
+** end of undefined **
+
+** start of undefined **
+
+document.getElementById('convert-btn').addEventListener('click', function() {
+    const numberInput = document.getElementById('number').value;
+    const outputElement = document.getElementById('output');
+
+    if (!numberInput) {
+        outputElement.textContent = "Please enter a valid number";
+        return;
+    }
+
+    const number = parseInt(numberInput, 10);
+
+    if (number < 1) {
+        outputElement.textContent = "Please enter a number greater than or equal to 1";
+        return;
+    }
+
+    if (number >= 4000) {
+        outputElement.textContent = "Please enter a number less than or equal to 3999";
+        return;
+    }
+
+    outputElement.textContent = convertToRoman(number);
+});
+
+function convertToRoman(num) {
+    const romanNumeralMap = [
+        { value: 1000, symbol: "M" },
+        { value: 900, symbol: "CM" },
+        { value: 500, symbol: "D" },
+        { value: 400, symbol: "CD" },
+        { value: 100, symbol: "C" },
+        { value: 90, symbol: "XC" },
+        { value: 50, symbol: "L" },
+        { value: 40, symbol: "XL" },
+        { value: 10, symbol: "X" },
+        { value: 9, symbol: "IX" },
+        { value: 5, symbol: "V" },
+        { value: 4, symbol: "IV" },
+        { value: 1, symbol: "I" }
+    ];
+
+    let roman = "";
+
+    for (let i = 0; i < romanNumeralMap.length; i++) {
+        while (num >= romanNumeralMap[i].value) {
+            roman += romanNumeralMap[i].symbol;
+            num -= romanNumeralMap[i].value;
+        }
+    }
+
+    return roman;
+}
+
+
+** end of undefined **
+
+** start of undefined **
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f2f5;
+}
+
+.container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+h1 {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+#number {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s;
+}
+
+#number:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+#convert-btn {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#convert-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+#output {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #333;
+}
+
+
+** end of undefined **
+
